@@ -514,7 +514,7 @@
 <p>相比于2NF，消除了<strong>非主属性对码的传递函数依赖</strong><br>
 定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>，若<span class="math inline">\(R \in 3NF\)</span>，则每个非主属性既不传递依赖于码，也不部分依赖于码，也就是说，若R属于3NF则必有R属于2NF</p>
 <h3 id="bcnf">BCNF</h3>
-<p>相比于3NF，消除了<strong>主属性对码的部分和传递函数依赖</strong><br>
+<p>相比于3NF，消除了主属性对码的部分和传递函数依赖<br>
 定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>，若<strong>每个决定因素</strong>都包含码（候选码），则<span class="math inline">\(R \in BCNF\)</span><br>
 满足BCNF的关系模式的性质：</p>
 <ol type="1">
@@ -541,9 +541,9 @@ i12=>inputoutput: 消除非主属性对码的部分函数依赖
 o2=>operation: 2NF
 i23=>inputoutput: 消除非主属性对码的传递函数依赖
 o3=>operation: 3NF
-i3b=>inputoutput: 消除主属性对码的部分和传递函数依赖
+i3b=>inputoutput: 每个函数依赖的左部都包含某个候选码
 ob=>operation: BCNF
-ib4=>inputoutput: 消除非平凡且非函数依赖的多值依赖
+ib4=>inputoutput: 每个多值依赖的左部都包含某个候选码
 o4=>operation: 4NF
 
 o1->i12->o2->i23->o3->i3b->ob->ib4->o4</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script>
