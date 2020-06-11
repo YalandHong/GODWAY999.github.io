@@ -573,7 +573,7 @@
 </ul>
 <p>恢复操作就是<strong>撤销故障发生时未完成的事务</strong>和<strong>重做已完成的事务</strong><br>
 系统故障的恢复由系统在重新启动时自动完成，不需要用户的干预<br>
-恢复步骤为：</p>
+恢复步骤为（详见第五版课本10.5.2）：</p>
 <ol type="1">
 <li><strong>正向扫描</strong>日志文件，找出在故障发生前已经提交的事务，将其事务标识记入重做队列（REDO-LIST）。同时找出故障发生时未完成的事务（它们没有COMMIT记录），将其事务标识记入撤销队列（UNDO-LIST）</li>
 <li>对撤销队列中的各个事务进行撤销（UNDO）处理</li>
@@ -614,12 +614,13 @@ checkpoint表示将更新操作执行到磁盘上。如果checkpoint在重新开
 <li>如有新开始的事务T，将T加入UNDO-LIST</li>
 <li>如有提交的事务J，<strong>将J从UNDO-LIST移入REDO-LIST</strong></li>
 </ul></li>
-<li>对UNDO-LIST中的每个事务执行<strong>撤销</strong>操作；对REDO-LIST中的每个事务执行<strong>重做</strong>操作</li>
+<li>对UNDO-LIST中的每个事务执行<strong>撤销</strong>操作（无论事务是在checkpoint之前还是之后开始）；对REDO-LIST中的每个事务执行<strong>重做</strong>操作</li>
 </ol>
 <strong>最终目的：在checkpoint之前执行完毕的，忽略；在crash之前执行完毕的，重做checkpoint之后的部分；在crash时没有执行完毕的，将crash之前的所有操作撤销</strong>
 <hr>
 <h2>数据库镜像</h2>
-todo todo todotodotodotodo<br>
+说白了就是高级一些的backup。主库更新时，自动同步到备库。主库挂掉后，启用备库，并利用备库恢复主库。<br>
+备库还可以增加read的并行度。<br>
 
     </div>
 
