@@ -485,12 +485,12 @@
 <h2 id="规范化">规范化</h2>
 <h3 id="函数依赖">函数依赖</h3>
 <ul>
-<li><p>定义：若属性组<span class="math inline">\(X\)</span>能唯一确定属性组<span class="math inline">\(Y\)</span>，则称<span class="math inline">\(X\)</span><strong>函数确定</strong><span class="math inline">\(Y\)</span>或<span class="math inline">\(Y\)</span><strong>函数依赖</strong><span class="math inline">\(X\)</span>，记作<span class="math inline">\(X \rightarrow Y\)</span>。</p></li>
-<li><p><span class="math inline">\(X \rightarrow Y\)</span>，但<span class="math inline">\(Y \nsubseteq X\)</span>，则称<span class="math inline">\(X \rightarrow Y\)</span>是<strong>非平凡的函数依赖</strong>。<span class="math inline">\(X\)</span>称为这个函数依赖的决定属性<strong>组</strong>，也称为<strong>决定属性</strong>。</p></li>
+<li><p>定义：若属性组<span class="math inline">\(X\)</span>能唯一确定属性组<span class="math inline">\(Y\)</span>，则称<span class="math inline">\(X\)</span><strong>函数确定</strong><span class="math inline">\(Y\)</span>或<span class="math inline">\(Y\)</span><strong>函数依赖</strong><span class="math inline">\(X\)</span>，记作<span class="math inline">\(X \rightarrow Y\)</span>。注意不同说法中XY的顺序！</p></li>
+<li><p><span class="math inline">\(X \rightarrow Y\)</span>，但<span class="math inline">\(Y \nsubseteq X\)</span>，则称<span class="math inline">\(X \rightarrow Y\)</span>是<strong>非平凡的函数依赖</strong>。<span class="math inline">\(X\)</span>称为这个函数依赖的<strong>决定属性</strong>。</p></li>
 <li><p><span class="math inline">\(X \rightarrow Y\)</span>，但<span class="math inline">\(Y \subseteq X\)</span>，则称<span class="math inline">\(X \rightarrow Y\)</span>是<strong>平凡的函数依赖</strong>。对于任一关系模式，平凡函数依赖都是必然成立的，它不反映新的语义。若不特别声明，总是讨论非平凡的函数依赖。</p></li>
 <li><p>若<span class="math inline">\(X \rightarrow Y\)</span>，<span class="math inline">\(Y \rightarrow X\)</span>，则记作<span class="math inline">\(X \leftarrow \rightarrow Y\)</span></p></li>
 <li><p>若<span class="math inline">\(Y\)</span>不函数依赖于<span class="math inline">\(X\)</span>，则记作<span class="math inline">\(X \nrightarrow Y\)</span></p></li>
-<li><p>定义：在<span class="math inline">\(R(U)\)</span>中，如果<span class="math inline">\(X \rightarrow Y\)</span>，并且对于<span class="math inline">\(X\)</span>的任何一个<strong>真子集</strong><span class="math inline">\(X&#39;\)</span>，都有<span class="math inline">\(X&#39; \nrightarrow Y\)</span>，则称<span class="math inline">\(Y\)</span>对<span class="math inline">\(X\)</span><strong>完全函数依赖</strong>，记作<span class="math inline">\(X \stackrel{F}{\rightarrow} Y\)</span></p></li>
+<li><p>定义：在<span class="math inline">\(R(U)\)</span>中，如果<span class="math inline">\(X \rightarrow Y\)</span>，并且对于<span class="math inline">\(X\)</span>的任何一个<strong>真子集</strong><span class="math inline">\(X&#39;\)</span>，都有<span class="math inline">\(X&#39; \nrightarrow Y\)</span>，则称<span class="math inline">\(Y\)</span>对<span class="math inline">\(X\)</span><strong>完全函数依赖</strong>，记作<span class="math inline">\(X \stackrel{F}{\rightarrow} Y\)</span>。即：恰好能够建立映射的最小X</p></li>
 <li><p>若<span class="math inline">\(X \rightarrow Y\)</span>，但<span class="math inline">\(Y\)</span>不完全函数依赖于<span class="math inline">\(X\)</span>，则称Y对X<strong>部分函数依赖</strong>，记作<span class="math inline">\(X \stackrel{P}{\rightarrow} Y\)</span>，等价于在完全函数依赖中加入冗余属性使之变成部分函数依赖</p></li>
 <li><p>定义：在<span class="math inline">\(R(U)\)</span>中，如果<span class="math inline">\(X \rightarrow Y (Y \nsubseteq X)\)</span>，<span class="math inline">\(Y \nrightarrow X\)</span>，<span class="math inline">\(Y \rightarrow Z\)</span>，<span class="math inline">\(Z \nsubseteq Y\)</span>，则称<span class="math inline">\(Z\)</span>对<span class="math inline">\(X\)</span><strong>传递函数依赖</strong>，记作<span class="math inline">\(X \stackrel{传递}{\rightarrow} Y\)</span></p></li>
 </ul>
@@ -508,14 +508,14 @@
 <p>每个分量（属性）必须是不可分的数据项</p>
 <h3 id="nf-1">2NF</h3>
 <p>相比于1NF，消除了<strong>非主属性对码的部分函数依赖</strong><br>
-定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>, 若<span class="math inline">\(R \in 1NF\)</span>，且每个非主属性<strong>完全函数依赖</strong>于任何一个候选码，则<span class="math inline">\(R \in 2NF\)</span><br>
+定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>, 若<span class="math inline">\(R \in 1NF\)</span>，且<strong>每个</strong>非主属性<strong>完全函数依赖</strong>于任何一个候选码，则<span class="math inline">\(R \in 2NF\)</span><br>
 一个关系模式R若不属于2NF，可能会产生：插入异常、删除异常、修改复杂</p>
 <h3 id="nf-2">3NF</h3>
 <p>相比于2NF，消除了<strong>非主属性对码的传递函数依赖</strong><br>
 定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>，若<span class="math inline">\(R \in 3NF\)</span>，则每个非主属性既不传递依赖于码，也不部分依赖于码，也就是说，若R属于3NF则必有R属于2NF</p>
 <h3 id="bcnf">BCNF</h3>
 <p>相比于3NF，消除了主属性对码的部分和传递函数依赖<br>
-定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>，若<strong>每个决定因素</strong>都包含码（候选码），则<span class="math inline">\(R \in BCNF\)</span><br>
+定义：设关系模式<span class="math inline">\(R&lt; U,F &gt;\)</span>，若<strong>每个决定因素</strong>都包含码（即，<strong>每个依赖关系的左部都是或者包含一个候选码</strong>），则<span class="math inline">\(R \in BCNF\)</span><br>
 满足BCNF的关系模式的性质：</p>
 <ol type="1">
 <li>所有非主属性对每一个码都是完全函数依赖</li>
@@ -524,30 +524,14 @@
 </ol>
 <h3 id="多值依赖">多值依赖</h3>
 <p>
-  表示<strong>多对多</strong>的关系。确定了一个指定的<span class="math inline">\(X\)</span>，则可以确定一组<span class="math inline">\(Y\)</span>的值<br>
+表示<strong>多对多</strong>的关系。确定了一个指定的<span class="math inline">\(X\)</span>，则可以确定一组<span class="math inline">\(Y\)</span>的值<br>
+<img src="mul.png" alt="mul"><br>
   
 </p>
 <h3 id="nf-3">4NF</h3>
 <p>相比于BCNF，消除了<strong>非平凡且非函数依赖的多值依赖</strong></p>
 <h3 id="规范化小结">规范化小结</h3>
 <p>规范化的基本思想是逐步消除数据依赖中不合适的部分</p>
-<div id="flowchart-0" class="flow-chart">
-
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
-<textarea id="flowchart-0-code" style="display: none">o1=>operation: 1NF
-i12=>inputoutput: 消除非主属性对码的部分函数依赖
-o2=>operation: 2NF
-i23=>inputoutput: 消除非主属性对码的传递函数依赖
-o3=>operation: 3NF
-i3b=>inputoutput: 每个函数依赖的左部都包含某个候选码
-ob=>operation: BCNF
-ib4=>inputoutput: 每个多值依赖的左部都包含某个候选码
-o4=>operation: 4NF
-
-o1->i12->o2->i23->o3->i3b->ob->ib4->o4</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script>
-
       
     </div>
 
